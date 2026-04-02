@@ -2,7 +2,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class PongGame?
+public class PongGame extends JPanel implements KeyListener, ActionListener {
+    private int ballX = 250, ballY = 250, ballDX = 2, ballDY = 2;
+    private int paddle1Y = 200, paddle2Y = 200;
+    private final int PADDLE_HEIGHT = 80, PADDLE_WIDTH = 10;
+    private final int BALL_SIZE = 20;
+    private Timer timer;
+
+    public PongGame() {
+        setFocusable(true);
+        addKeyListener(this);
+        timer = new Timer(10, this);
+        timer.start();
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Background
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
 
@@ -56,7 +73,7 @@ public class PongGame?
 
     @Override
     public void keyReleased(KeyEvent e) {}
-
+    @Override
     public void keyTyped(KeyEvent e) {}
 
     public static void main(String[] args) {
@@ -68,3 +85,4 @@ public class PongGame?
         frame.setVisible(true);
     }
 }
+
